@@ -144,7 +144,6 @@ console.log(christy);
 //detemines position of a element
 console.log(christy.indexOf("christy"));
 console.log(christy.indexOf("shilpi")); //this means this element is not present in array
-
 var isDesigner =
   christy.indexOf("designer") === -1
     ? "christy is not designer"
@@ -169,3 +168,182 @@ var tips = [
 ];
 var finalValues = [bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2]];
 console.log(finalValues);
+
+//Object and its properties
+
+//Object literal
+var christy = {
+  name: "shilpi",
+  age: 24,
+  isMarried: false,
+  favDestination: ["paris", "bangkok", "manali", "osaka"],
+  job: "aspiring web developer"
+};
+console.log(christy.name);
+console.log(christy.favDestination[2]);
+console.log(christy["age"]);
+var x = "job";
+console.log(christy[x]);
+
+//mutate data
+christy.job = "docotor";
+christy["isMarried"] = true;
+console.log(christy);
+
+//new Object syntax
+var suzen = new Object();
+suzen.name = "Rupali";
+suzen.age = 24;
+suzen.job = "govt offier";
+suzen["isMarried"] = false;
+console.log(suzen);
+
+//object method
+var shilpi = {
+  name: "shilpi",
+  birthYear: 1995,
+  isMarried: false,
+  friends: ["rupali", "rajat", "anjali"],
+  job: "aspiring front-end developer",
+  calcAge: function() {
+    this.age = 2019 - this.birthYear;
+  }
+};
+shilpi.calcAge();
+console.log(shilpi);
+
+//coding challenge 4
+
+var john = {
+  fullName: "John Smith",
+  mass: 80,
+  height: 1.65,
+  calcBMI: function() {
+    this.bmi = this.mass / (this.height * 2);
+    return this.bmi;
+  }
+};
+var mark = {
+  fullName: "Mark Geller",
+  mass: 90,
+  height: 1.65,
+  calcBMI: function() {
+    this.bmi = this.mass / (this.height * 2);
+    return this.bmi;
+  }
+};
+console.log(mark, john);
+if (mark.calcBMI() > john.calcBMI()) {
+  console.log(mark.fullName + " " + "has greater bmi");
+} else if (john.bmi > mark.bmi) {
+  console.log(john.fullName + " " + "has greater bmi");
+} else {
+  console.log("they both have same bmi");
+}
+
+//loops and iteration
+
+//for loop
+for (var i = 0; i < 11; i++) {
+  console.log(i);
+}
+var favChar = ["Rachel", "Phebee", "Joey", "Sheldon", "Denerys", "Arya"];
+for (var i = 0; i < favChar.length; i++) {
+  console.log(favChar[i]);
+}
+//reverse order
+for (var i = favChar.length - 1; i >= 0; i--) {
+  console.log(favChar[i]);
+}
+//while loop
+var i = 0;
+while (i < favChar.length) {
+  console.log(favChar[i]);
+  i++;
+}
+//continue and break statements
+var favChar = [
+  "Rachel",
+  false,
+  "Phebee",
+  "Joey",
+  1990,
+  "Sheldon",
+  "Denerys",
+  true,
+  1995,
+  "Arya"
+];
+//continue statement will break the loop and start again
+for (var i = 0; i < favChar.length; i++) {
+  if (typeof favChar[i] !== "string") continue;
+  console.log(favChar[i]);
+}
+//break statement will break the loop
+for (var i = 0; i < favChar.length; i++) {
+  if (typeof favChar[i] !== "string") break;
+  console.log(favChar[i]);
+}
+//final coding challenge
+//part 1
+
+var edward = {
+  name: "Edward Cullen",
+  bills: [124, 48, 268, 180, 42],
+  calcTip: function() {
+    this.tip = [];
+    this.totalValues = [];
+    for (var i = 0; i < this.bills.length; i++) {
+      if (this.bills[i] < 50) {
+        this.tip[i] = 0.2 * this.bills[i];
+      } else if (this.bills[i] >= 50 && this.bills[i] < 200) {
+        this.tip[i] = 0.15 * this.bills[i];
+      } else {
+        this.tip[i] = 0.1 * this.bills[i];
+      }
+      this.totalValues[i] = this.tip[i] + this.bills[i];
+    }
+  }
+};
+edward.calcTip();
+console.log(edward);
+
+//part2
+
+var jacob = {
+  name: "Jacob Black",
+  bills: [134, 46, 59, 456, 110],
+  calcTip: function() {
+    this.tip = [];
+    this.totalValues = [];
+    for (var i = 0; i < this.bills.length; i++) {
+      if (this.bills[i] < 50) {
+        this.tip[i] = 0.2 * this.bills[i];
+      } else if (this.bills[i] >= 50 && this.bills[i] < 200) {
+        this.tip[i] = 0.15 * this.bills[i];
+      } else {
+        this.tip[i] = 0.1 * this.bills[i];
+      }
+      this.totalValues[i] = this.tip[i] + this.bills[i];
+    }
+  }
+};
+jacob.calcTip();
+console.log(jacob);
+
+function calcAverage(tips) {
+  var sum = 0;
+  for (var i = 0; i < tips.length; i++) {
+    sum = sum + tips[i];
+  }
+  return sum / tips.length;
+}
+edward.average = calcAverage(edward.tip);
+jacob.average = calcAverage(jacob.tip);
+if (edward.average > jacob.average) {
+  console.log("edward family paid more tip");
+} else if (jacob.average > edward.average) {
+  console.log("jacob family paid more tips");
+} else {
+  console.log("both families paid same tip");
+}
