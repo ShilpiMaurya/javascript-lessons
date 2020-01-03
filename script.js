@@ -194,7 +194,7 @@ console.log(christy);
 var suzen = new Object();
 suzen.name = "Rupali";
 suzen.age = 24;
-suzen.job = "govt offier";
+suzen.job = "designer";
 suzen["isMarried"] = false;
 console.log(suzen);
 
@@ -275,11 +275,13 @@ var favChar = [
   "Arya"
 ];
 //continue statement will break the loop and start again
+
 for (var i = 0; i < favChar.length; i++) {
   if (typeof favChar[i] !== "string") continue;
   console.log(favChar[i]);
 }
 //break statement will break the loop
+
 for (var i = 0; i < favChar.length; i++) {
   if (typeof favChar[i] !== "string") break;
   console.log(favChar[i]);
